@@ -51,7 +51,7 @@ def zip_folder(archive_path):
 
     with zf.ZipFile(os.path.join(archive_path,f"{archive_name}.zip"),"w") as zipf:
         for file in files:
-            zipf.write(file) # Ignore
+            zipf.write(file, os.path.basename(file)) # Ignore
 
     for f in files:
         try:
@@ -88,5 +88,3 @@ async def delete_folder_later(folder_path, delay=3):
     if os.path.exists(folder_path):
         shutil.rmtree(folder_path)
         print(f"[AUTO DELETE] Deleted folder: {folder_path}")
-
-
